@@ -25,9 +25,12 @@ dependencies:
 ## Initialization
 
 
-Before using `FFL` you need to initialize this class.
+Before using `FFL` you need to initialize this class. You can use the `path_provider` library to set the path to save the file
+
 
 ```dart
+final dir = await getApplicationDocumentsDirectory();
+
 FFL.init(
     dir: dir,
     fileName: "app_logs.txt",
@@ -61,4 +64,18 @@ try {
   
 /// FATAL message
 FFL.f("fatal error");
+```
+
+File output:
+```
+2025-02-15T19:53:39.711616 [main] [INFO] info message
+
+2025-02-15T19:53:39.726301 [main] [WARN] warning message
+
+2025-02-15T19:53:39.726833 [DefaultTag] [ERROR] Something wrong
+Exception: Some exception
+#0      main (package:flutter_files_log_example/main.dart:25:5)
+<asynchronous suspension>
+
+2025-02-15T19:53:39.727916 [DefaultTag] [FATAL] fatal error
 ```
